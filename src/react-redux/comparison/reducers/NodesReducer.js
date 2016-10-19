@@ -1,4 +1,4 @@
-import * as actionTypes  from '../actionTypes'
+import * as actionTypes  from '../constants/actionTypes'
 import createNodeTree from '../../../createNodeTree'
 
 const defaults = {

@@ -4,7 +4,7 @@ import {
   CHANGE_NODES_NUMBER,
   UPDATE_NODE_LIST,
   BUILD_NODE_LIST
-} from '../actionTypes';
+} from '../constants/actionTypes';
 
 export function changeName(name) {
 

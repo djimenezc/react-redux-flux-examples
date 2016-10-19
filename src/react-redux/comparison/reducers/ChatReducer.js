@@ -2,7 +2,7 @@ import {
   ADD_CHAT,
   CHANGE_STATUS,
   CHANGE_USERNAME
-} from '../actionTypes';
+} from '../constants/actionTypes';
 
 const defaultState = {
   statusMessage: 'disconnected',
