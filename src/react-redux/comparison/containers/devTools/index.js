@@ -12,10 +12,10 @@ import actions from '../../actions';
 
 const DevTools = createDevTools(
   <DockMonitor toggleVisibilityKey="ctrl-h" changePositionKey="ctrl-q"
-               changeMonitorKey="ctrl-m">
+               changeMonitorKey="ctrl-m" defaultIsVisible={true}>
+    <Inspector theme="tomorrow" invertTheme={false}/>
     <LogMonitor theme="tomorrow" preserveScrollTop={false}/>
     <DiffMonitor theme='tomorrow'/>
-    <Inspector theme="tomorrow" invertTheme={false}/>
     <SliderMonitor keyboardEnabled/>
     <ChartMonitor/>
     <Dispatcher actionCreators={actions}/>

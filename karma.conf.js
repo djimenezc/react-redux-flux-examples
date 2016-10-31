@@ -18,7 +18,7 @@ module.exports = function(config) {
       mocha: {}
     },
     singleRun: true,
-    reporters: [ 'mocha', 'coverage' ],
+    reporters: ['spec', 'coverage'],
     preprocessors: {
       'test/loadtests.js': [ 'webpack', 'sourcemap' ]
     },
@@ -33,6 +33,14 @@ module.exports = function(config) {
         { type: 'text' }
       ]
     },
+    specReporter: {
+      maxLogLines: 5,         // limit number of lines logged per test
+      suppressErrorSummary: true,  // do not print error summary
+      suppressFailed: false,  // do not print information about failed tests
+      suppressPassed: false,  // do not print information about passed tests
+      suppressSkipped: true,  // do not print information about skipped tests
+      showSpecTiming: true // print the time elapsed for each spec
+    },
     plugins: [
       'karma-babel-preprocessor',
       'karma-sourcemap-loader',
@@ -42,7 +50,8 @@ module.exports = function(config) {
       'karma-coverage',
       'karma-phantomjs-launcher',
       'karma-chrome-launcher',
-      'karma-webpack'
+      'karma-webpack',
+      'karma-spec-reporter'
     ]
   });
 };

@@ -5,6 +5,7 @@ import reducers from '../reducers';
 import {routerMiddleware} from 'react-router-redux'
 import {browserHistory} from 'react-router'
 import DevTools from '../containers/devTools'
+import {persistState} from 'redux-devtools';
 import {applyMiddleware, createStore, compose} from 'redux'
 
 const routerMiddlewareWrapped = routerMiddleware(browserHistory);
@@ -13,11 +14,20 @@ const middleware = applyMiddleware(promise(), thunk, logger(), routerMiddlewareW
 
 const composeEnhancers = compose;
 
+function getDebugSessionKey() {
+  // You can write custom logic here!
+  // By default we try to read the key from ?debug_session=<key> in the address bar
+  const matches = window.location.href.match(/[?&]debug_session=([^&#]+)\b/);
+  return (matches && matches.length > 0) ? matches[1] : null;
+}
+
 const enhancer = composeEnhancers(
   // Middleware you want to use in development:
   middleware,
   // Required! Enable Redux DevTools with the monitors you chose
-  DevTools.instrument()
+  DevTools.instrument(),
+  // Lets you write ?debug_session=<key> in address bar to persist debug sessions
+  persistState(getDebugSessionKey())
 );
 
 function configureStore(initialState) {
